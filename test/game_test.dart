@@ -12,10 +12,10 @@ void main() {
   });
 
   test('bölümler üretilir ve bot tarafından geçilir', timeout: const Timeout(Duration(minutes: 10)), () {
-    expect(tankRules.levelCount, 100000);
-    final planner = LevelPlanner(gameId: tankId, optionalMechanics: tankRules.optionalMechanics);
+    expect(tankGameRules.levelCount, 100000);
+    final planner = LevelPlanner(gameId: tankId, optionalMechanics: tankGameRules.optionalMechanics);
     for (final lv in [1, 77, 1500, 33333, 99999]) {
-      expect(tankRules.build(planner.spec(lv)).validation.ok, isTrue, reason: 'bölüm $lv');
+      expect(tankGameRules.build(planner.spec(lv)).validation.ok, isTrue, reason: 'bölüm $lv');
     }
   });
 }

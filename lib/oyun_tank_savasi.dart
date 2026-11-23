@@ -5,11 +5,10 @@ import 'package:arcade_motoru/tank.dart';
 import 'package:flutter/material.dart';
 import 'package:studio_core/app/arcade_stage.dart';
 import 'package:studio_core/app/game_api.dart';
-import 'package:studio_core/core/game_rules.dart';
 
 const tankId = 'oyun-tank-savasi';
 
-final tankRules = tankRules(tankId);
+final tankGameRules = tankRules(tankId);
 
 final tankConfig = GameConfig(
   gameId: tankId,
@@ -85,10 +84,10 @@ final tankConfig = GameConfig(
     ],
   seedColor: const Color(0xFF606C38),
   icon: Icons.shield,
-  rules: tankRules,
+  rules: tankGameRules,
   buildPlay: (ctx) => ArcadeStage(
     ctx: ctx,
-    create: () => tankRules.createSim((ctx.generated as GeneratedLevel).puzzle),
+    create: () => tankGameRules.createSim(ctx.generated.puzzle),
     paint: (c, s, p, t) {
       arcadeLang = ctx.lang;
       paintTank(c, s, p, t);
